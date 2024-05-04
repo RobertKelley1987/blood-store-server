@@ -20,6 +20,7 @@ module.exports.PRICE_MAP = {
   "blood-incantation-hidden-history-longsleeve": 34.99,
   "blood-incantation-hidden-history-tour-longsleeve": 34.99,
   "blood-incantation-hidden-species-longsleeve": 34.99,
+  "blood-incantation-logo-grey-longsleeve": 34.99,
   "blood-incantation-hidden-history-hoodie": 29.99,
   "blood-incantation-interdimensional-extinction-lp": 21.99,
   "blood-incantation-starspawn-lp": 21.99,
