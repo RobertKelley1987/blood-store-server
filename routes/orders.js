@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router({ mergeParams: true });
-const contact = require("../controllers/contact");
+const orders = require("../controllers/orders");
 
-router.post("/", contact.sendMail);
+router.post("/", orders.create);
 
 module.exports = router;

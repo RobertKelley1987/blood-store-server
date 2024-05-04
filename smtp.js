@@ -1,0 +1,16 @@
+const nodemailer = require("nodemailer");
+
+const smtpConfig = {
+  service: "Gmail",
+  host: "smtp.gmail.com",
+  port: 465,
+  secure: true,
+  auth: {
+    user: process.env.EMAIL,
+    pass: process.env.PASSWORD,
+  },
+};
+
+const smtp = nodemailer.createTransport(smtpConfig);
+
+module.exports = smtp;

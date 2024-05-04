@@ -1,18 +1,6 @@
-const nodemailer = require("nodemailer");
+const smtp = require("../smtp");
 const catchAsync = require("../util/catch-async");
 const ExpressError = require("../util/express-error");
-
-// Config nodemailer
-const transporter = nodemailer.createTransport({
-  service: "Gmail",
-  host: "smtp.gmail.com",
-  port: 465,
-  secure: true,
-  auth: {
-    user: process.env.EMAIL,
-    pass: process.env.PASSWORD,
-  },
-});
 
 module.exports.sendMail = catchAsync(async (req, res) => {
   const { name, email, subject, message } = req.body;
@@ -30,7 +18,7 @@ module.exports.sendMail = catchAsync(async (req, res) => {
       MESSAGE:${message}`,
   };
 
-  const { error } = transporter.sendMail(mail);
+  const { error } = await smtp.sendMail(mail);
   if (error) {
     throw new ExpressError("Failed to send message from contact form.");
   }
