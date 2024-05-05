@@ -1,2 +1,3 @@
-- New gmail account and app password that is more general, like: bloodstoreadmin@gmail.com
-- formatting for emails sucks
+- Add shipping method to orders route and notification email
+- Do I need to put print functions in a separate file? Util maybe?
+- Clean code in the fucking orders controller
