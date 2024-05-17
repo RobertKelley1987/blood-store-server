@@ -4,6 +4,7 @@ if (process.env.NODE_ENV !== "production") {
 }
 // Required vars
 import express from "express";
+import cors from "cors";
 import pmtIntentRoutes from "./routes/pmt-intents.js";
 import contactRoutes from "./routes/contact.js";
 import orderRoutes from "./routes/orders.js";
@@ -12,6 +13,12 @@ import errorHandler from "./error-handler.js";
 // Start app and add general config
 const app = express();
 app.use(express.json());
+app.use(
+  cors({
+    origin: "http://localhost:3000",
+    credentials: true,
+  })
+);
 
 // Config routing
 app.use("/pmt-intents", pmtIntentRoutes);
@@ -20,6 +27,6 @@ app.use("/orders", orderRoutes);
 app.use(errorHandler);
 
 // Start 'er up
-app.listen(3001, () =>
-  console.log(`Your server is up and running on port 3001`)
+app.listen(3000, () =>
+  console.log(`Your server is up and running on port 3000`)
 );

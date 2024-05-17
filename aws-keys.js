@@ -1,5 +1,5 @@
 import { SSMClient, GetParameterCommand } from "@aws-sdk/client-ssm";
-const client = new SSMClient();
+const client = new SSMClient({ region: "us-east-2" });
 
 // STRIPE API KEY
 const storeKeyInfo = { Name: "BLOOD_STORE_KEY", WithDecryption: true };
