@@ -1,7 +1,7 @@
-const express = require("express");
+import express from "express";
 const router = express.Router({ mergeParams: true });
-const contact = require("../controllers/contact");
+import contact from "../controllers/contact.js";
 
 router.post("/", contact.sendMail);
 
-module.exports = router;
+export default router;

@@ -1,7 +1,7 @@
-const express = require("express");
+import express from "express";
 const router = express.Router({ mergeParams: true });
-const orders = require("../controllers/orders");
+import orders from "../controllers/orders.js";
 
 router.post("/", orders.create);
 
-module.exports = router;
+export default router;

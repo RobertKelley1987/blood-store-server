@@ -1,8 +1,8 @@
-const express = require("express");
+import express from "express";
 const router = express.Router({ mergeParams: true });
-const pmtIntents = require("../controllers/pmt-intents");
+import pmtIntents from "../controllers/pmt-intents.js";
 
 router.post("/", pmtIntents.create);
 router.put("/", pmtIntents.update);
 
-module.exports = router;
+export default router;

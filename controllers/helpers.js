@@ -24,7 +24,7 @@ const printShipping = (shipping, email) => {
 };
 
 // Helper to print order data
-module.exports.printOrder = (order) => {
+export const printOrder = (order) => {
   const { id, email, shipping, items } = order;
 
   let orderText = `<h1>ORDER# ${id}</h1>`;
@@ -34,7 +34,7 @@ module.exports.printOrder = (order) => {
   return orderText;
 };
 
-module.exports.printContactFormData = (name, email, subject, message) => {
+export const printContactFormData = (name, email, subject, message) => {
   return `<p>NAME: ${name}</p>
   <p>EMAIL: ${email}</p>
   <p>SUBJECT: ${subject}</p>

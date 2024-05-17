@@ -1,3 +1,1 @@
 - Add shipping method to orders route and notification email
-- Do I need to put print functions in a separate file? Util maybe?
-- Clean code in the fucking orders controller

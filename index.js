@@ -1,12 +1,13 @@
+import dotenv from "dotenv";
 if (process.env.NODE_ENV !== "production") {
-  require("dotenv").config();
+  dotenv.config();
 }
 // Required vars
-const express = require("express");
-const pmtIntentRoutes = require("./routes/pmt-intents");
-const contactRoutes = require("./routes/contact");
-const orderRoutes = require("./routes/orders");
-const errorHandler = require("./error-handler");
+import express from "express";
+import pmtIntentRoutes from "./routes/pmt-intents.js";
+import contactRoutes from "./routes/contact.js";
+import orderRoutes from "./routes/orders.js";
+import errorHandler from "./error-handler.js";
 
 // Start app and add general config
 const app = express();
@@ -19,7 +20,6 @@ app.use("/orders", orderRoutes);
 app.use(errorHandler);
 
 // Start 'er up
-const { PORT } = process.env;
-app.listen(PORT, () =>
-  console.log(`Your server is up and running on port ${PORT}`)
+app.listen(3001, () =>
+  console.log(`Your server is up and running on port 3001`)
 );
