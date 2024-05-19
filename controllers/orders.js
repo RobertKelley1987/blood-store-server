@@ -10,12 +10,9 @@ const orders = {
     const newOrder = { ...req.body, id: uuid() };
 
     // Write order to db
-    const orders = await jsonFile.readFile("orders.json");
+    const orders = await jsonFile.readFile("db/orders.json");
     orders.push(newOrder);
-    const writeResult = await jsonFile.writeFile("orders.json", orders);
-    if (writeResult.error) {
-      throw new ExpressError(500, "Failed to save order info to db.");
-    }
+    await jsonFile.writeFile("db/orders.json", orders);
 
     // Create html for order summary
     const html = printOrder(newOrder);
