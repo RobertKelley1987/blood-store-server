@@ -2,23 +2,24 @@ import dotenv from "dotenv";
 if (process.env.NODE_ENV !== "production") {
   dotenv.config();
 }
+
 // Required vars
 import express from "express";
 import cors from "cors";
-import pmtIntentRoutes from "./routes/pmt-intents.js";
-import contactRoutes from "./routes/contact.js";
-import orderRoutes from "./routes/orders.js";
-import errorHandler from "./error-handler.js";
+import pmtIntentRoutes from "./routes/pmt-intents";
+import contactRoutes from "./routes/contact";
+import orderRoutes from "./routes/orders";
+import errorHandler from "./error-handler";
 
 // Start app and add general config
 const app = express();
 app.use(express.json());
-app.use(
-  cors({
-    origin: "http://ec2-3-144-152-142.us-east-2.compute.amazonaws.com",
-    credentials: true,
-  })
-);
+// app.use(
+//   cors({
+//     origin: "http://ec2-3-144-152-142.us-east-2.compute.amazonaws.com",
+//     credentials: true,
+//   })
+// );
 
 // Config routing
 app.use("/pmt-intents", pmtIntentRoutes);

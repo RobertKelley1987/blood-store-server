@@ -1,7 +1,7 @@
 import express from "express";
 const router = express.Router({ mergeParams: true });
-import contact from "../controllers/contact.js";
+import orders from "../controllers/orders";
 
-router.post("/", contact.sendMail);
+router.post("/", orders.create);
 
 export default router;

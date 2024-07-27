@@ -1,10 +1,11 @@
-import { mailersend, configAdminEmail } from "../smtp/index.js";
-import { catchAsync } from "../util/catch-async.js";
-import ExpressError from "../util/express-error.js";
-import { printContactFormData } from "./helpers.js";
+import { mailersend, configAdminEmail } from "../smtp";
+import { catchAsync } from "../util/catch-async";
+import ExpressError from "../util/express-error";
+import { printContactFormData } from "../util/print-helpers";
+import type { Request, Response } from "express";
 
 const contact = {
-  sendMail: catchAsync(async (req, res) => {
+  sendMail: catchAsync(async (req: Request, res: Response) => {
     const { name, email, subject, message } = req.body;
 
     // Do not accept requests without email and message

@@ -1,5 +1,8 @@
 import { MailerSend, EmailParams, Sender, Recipient } from "mailersend";
-import { mailKey } from "../aws-keys.js";
+import ExpressError from "../util/express-error";
+
+const mailKey = process.env.MAIL_KEY || "";
+if (!mailKey) throw new ExpressError(500, "Environment variables not set.");
 
 // Create MailerSend instance
 function initMailerSend() {
@@ -13,7 +16,12 @@ const sentFrom = new Sender(
 
 const recipients = [new Recipient("robertkelley1987@gmail.com")];
 
-const configEmail = (from, to, subject, html) => {
+const configEmail = (
+  from: Sender,
+  to: Recipient[],
+  subject: string,
+  html: string
+) => {
   return new EmailParams()
     .setFrom(from)
     .setTo(to)
@@ -22,7 +30,7 @@ const configEmail = (from, to, subject, html) => {
 };
 
 // Export helper fn to config email params from e-store
-export const configAdminEmail = (subject, html) => {
+export const configAdminEmail = (subject: string, html: string) => {
   return configEmail(sentFrom, recipients, subject, html);
 };
 

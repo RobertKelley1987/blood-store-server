@@ -1,4 +1,6 @@
-export const PRICE_MAP = {
+type PriceMap = { [product: string]: number };
+
+export const PRICE_MAP: PriceMap = {
   "blood-incantation-logo-tour-2022-t-shirt": 24.99,
   "blood-incantation-orbital-remains-tour-2022-t-shirt": 24.99,
   "blood-incantation-split-t-shirt": 24.99,
