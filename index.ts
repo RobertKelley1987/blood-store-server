@@ -5,7 +5,6 @@ if (process.env.NODE_ENV !== "production") {
 
 // Required vars
 import express from "express";
-import cors from "cors";
 import pmtIntentRoutes from "./routes/pmt-intents";
 import contactRoutes from "./routes/contact";
 import orderRoutes from "./routes/orders";
@@ -14,12 +13,6 @@ import errorHandler from "./error-handler";
 // Start app and add general config
 const app = express();
 app.use(express.json());
-// app.use(
-//   cors({
-//     origin: "http://ec2-3-144-152-142.us-east-2.compute.amazonaws.com",
-//     credentials: true,
-//   })
-// );
 
 // Config routing
 app.use("/pmt-intents", pmtIntentRoutes);
@@ -28,6 +21,5 @@ app.use("/orders", orderRoutes);
 app.use(errorHandler);
 
 // Start 'er up
-app.listen(3000, () =>
-  console.log(`Your server is up and running on port 3000`)
-);
+const port = process.env.PORT;
+app.listen(port, () => console.log(`The server listens on port ${port}`));
