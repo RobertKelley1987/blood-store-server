@@ -1,4 +1,4 @@
-import { mailersend, configAdminEmail } from "../smtp";
+import { sendEmail } from "../smtp";
 import { catchAsync } from "../util/catch-async";
 import ExpressError from "../util/express-error";
 import { printContactFormData } from "../util/print-helpers";
@@ -17,10 +17,9 @@ const contact = {
     const html = printContactFormData(name, email, subject, message);
     const emailSubject =
       "New Message from Blood Incantation Store Contact Form";
-    const emailParams = configAdminEmail(emailSubject, html);
-    const response = await mailersend.email.send(emailParams);
+    const data = await sendEmail(emailSubject, html);
 
-    res.send({ id: response.headers["x-message-id"] });
+    res.send({ id: data.MessageId });
   }),
 };
 

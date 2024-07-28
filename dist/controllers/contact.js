@@ -26,9 +26,8 @@ const contact = {
         // Send email to admin with contact form data
         const html = (0, print_helpers_1.printContactFormData)(name, email, subject, message);
         const emailSubject = "New Message from Blood Incantation Store Contact Form";
-        const emailParams = (0, smtp_1.configAdminEmail)(emailSubject, html);
-        const response = yield smtp_1.mailersend.email.send(emailParams);
-        res.send({ id: response.headers["x-message-id"] });
+        const data = yield (0, smtp_1.sendEmail)(emailSubject, html);
+        res.send({ id: data.MessageId });
     })),
 };
 exports.default = contact;

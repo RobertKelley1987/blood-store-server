@@ -31,13 +31,11 @@ const orders = {
         catch (error) {
             throw new express_error_1.default(500, "Failed to write order to db.");
         }
-        // Create html for order summary
+        // Create html for order summary and send email to admin
         const html = (0, print_helpers_1.printOrder)(newOrder);
-        // Send email notification to store admin inbox
         const subject = "New Order from Blood Incantation Store";
-        const adminParams = (0, smtp_1.configAdminEmail)(subject, html);
         try {
-            yield smtp_1.mailersend.email.send(adminParams);
+            yield (0, smtp_1.sendEmail)(subject, html);
         }
         catch (error) {
             throw new express_error_1.default(500, "Failed to send order confirmation to admin.");

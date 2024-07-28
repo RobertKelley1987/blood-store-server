@@ -1,4 +1,4 @@
-import { mailersend, configAdminEmail } from "../smtp";
+import { sendEmail } from "../smtp";
 import jsonFile from "jsonfile";
 import { v4 as uuid } from "uuid";
 import { catchAsync } from "../util/catch-async";
@@ -20,14 +20,11 @@ const orders = {
       throw new ExpressError(500, "Failed to write order to db.");
     }
 
-    // Create html for order summary
+    // Create html for order summary and send email to admin
     const html = printOrder(newOrder);
-
-    // Send email notification to store admin inbox
     const subject = "New Order from Blood Incantation Store";
-    const adminParams = configAdminEmail(subject, html);
     try {
-      await mailersend.email.send(adminParams);
+      await sendEmail(subject, html);
     } catch (error) {
       throw new ExpressError(
         500,
