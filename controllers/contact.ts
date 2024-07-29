@@ -14,12 +14,16 @@ const contact = {
     }
 
     // Send email to admin with contact form data
-    const html = printContactFormData(name, email, subject, message);
-    const emailSubject =
-      "New Message from Blood Incantation Store Contact Form";
-    const data = await sendEmail(emailSubject, html);
-
-    res.send({ id: data.MessageId });
+    try {
+      const html = printContactFormData(name, email, subject, message);
+      const emailSubject =
+        "New Message from Blood Incantation Store Contact Form";
+      const data = await sendEmail(emailSubject, html);
+      res.send({ id: data.MessageId });
+    } catch (error) {
+      console.log(error);
+      throw new ExpressError(500, "Failed to send contact form email.");
+    }
   }),
 };
 

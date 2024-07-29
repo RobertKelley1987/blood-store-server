@@ -24,10 +24,16 @@ const contact = {
             throw new express_error_1.default(400, "Email address and message are required.");
         }
         // Send email to admin with contact form data
-        const html = (0, print_helpers_1.printContactFormData)(name, email, subject, message);
-        const emailSubject = "New Message from Blood Incantation Store Contact Form";
-        const data = yield (0, smtp_1.sendEmail)(emailSubject, html);
-        res.send({ id: data.MessageId });
+        try {
+            const html = (0, print_helpers_1.printContactFormData)(name, email, subject, message);
+            const emailSubject = "New Message from Blood Incantation Store Contact Form";
+            const data = yield (0, smtp_1.sendEmail)(emailSubject, html);
+            res.send({ id: data.MessageId });
+        }
+        catch (error) {
+            console.log(error);
+            throw new express_error_1.default(500, "Failed to send contact form email.");
+        }
     })),
 };
 exports.default = contact;
