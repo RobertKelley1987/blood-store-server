@@ -11,21 +11,19 @@
 
 [Live Demo](https://fakebloodstore.xyz)
 
-This is the Express server I made to process emails and payments related to
-a fake e-commerce site for the band Blood Incantation. I am using Amazon's SES
-to send contact form and order confirmation emails to an admin account, and
-Stripe to process customer payments.
+This is the Express server I made to process emails and payments for my fake
+e-commerce site. I am using Amazon's SES to send contact form and order
+confirmation emails to an admin account, and Stripe to process customer payments.
 
-The biggest challenge I faced on this project was deploying to an AWS EC2 and
+The biggest challenges I faced on this project were deploying to an AWS EC2 and
 connecting to the client via HTTPS. I have zero DevOps experience so generating
-the SSL certificates from the EC2 took many hours of trial and error. I still
+the SSL certificates on the EC2 took many hours of trial and error. I still
 found the experience rewarding and hope to learn more about cloud technologies
 on future projects.
 
-I originally tried to implement Mailsender on this project, but hit a wall in
-their free tier when I went to production and added a domain name. For anyone
-already familiar with AWS, I found that SES was really easy to use, although it
-may add to my monthly AWS bill down the road.
+I originally tried to implement MailerSend as my SMTP but hit a wall in
+their free tier when I deployed to AWS and added a domain name. For anyone
+already familiar with AWS, I found SES really easy to use.
 
 ![Site screenshot](screenshot.png)
 
