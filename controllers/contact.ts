@@ -17,7 +17,7 @@ const contact = {
     try {
       const html = printContactFormData(name, email, subject, message);
       const emailSubject =
-        "New Message from Blood Incantation Store Contact Form";
+        "New Message from Blood Incantation Web Store Contact Form";
       const data = await sendEmail(emailSubject, html);
       res.send({ id: data.MessageId });
     } catch (error) {

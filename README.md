@@ -29,6 +29,7 @@ already familiar with AWS, I found SES really easy to use.
 
 ### Built With
 
+- [Node.js](https://nodejs.org/en)
 - [Express](https://expressjs.com/)
 - [TypeScript](https://www.typescriptlang.org/)
 - [Amazon SES](https://aws.amazon.com/ses/)

@@ -22,7 +22,7 @@ const orders = {
 
     // Create html for order summary and send email to admin
     const html = printOrder(newOrder);
-    const subject = "New Order from Blood Incantation Store";
+    const subject = "New Order from Blood Incantation Web Store";
     try {
       await sendEmail(subject, html);
     } catch (error) {
